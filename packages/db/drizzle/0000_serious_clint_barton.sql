@@ -1,0 +1,2 @@
+-- Initial migration placeholder
+-- This file is required by the migration system

@@ -1,0 +1,27 @@
+/* GitHub Dark */
+/* Dracula */
+/* Cursor Dark */
+:root {
+  --main-bg: #1a1a1a;
+  --bg-text: #141414;
+  --text-color: #CCCCCC;
+  --accent-color: #88C0D0;
+  --titlebar-bg: #141414;
+  --sidebar-bg: #1a1a1a;
+  --sidebar-hover-bg: #2A2A2A;
+  --explorer-bg: #141414;
+  --explorer-hover-bg: #2A2A2A;
+  --explorer-border: #2A2A2A;
+  --tabs-bg: #1a1a1a;
+  --tab-bg: #141414;
+  --tab-active-bg: #141414;
+  --tab-border: transparent;
+  --bottombar-bg: #1a1a1a;
+  --bottombar-border: #202020;
+  --button-bg: #81A1C1;
+  --button-text: #191c22;
+  --bottombar-hover-bg: #404040;
+  --scrollbar-track-bg: #1a1a1a;
+  --scrollbar-thumb-bg: #404040;
+  --article-bg: #141414;
+}

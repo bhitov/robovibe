@@ -1,0 +1,211 @@
+.container {
+  padding: 2rem;
+  color: var(--article-color);
+  font-family: var(--font-family);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--accent-color);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.authCard {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.tabContainer {
+  margin-bottom: 1.5rem;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background-color: var(--input-bg);
+  padding: 0.25rem;
+  border-radius: 6px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.activeTab {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+}
+
+.tabContent {
+  margin-bottom: 1.5rem;
+}
+
+.clerkContainer {
+  /* Clerk-specific overrides */
+}
+
+.socialButton {
+  background-color: var(--input-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.primaryButton {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.input {
+  background-color: var(--input-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--article-color) !important;
+}
+
+.label {
+  color: var(--text-color) !important;
+}
+
+.identityText {
+  color: var(--text-color) !important;
+}
+
+.editButton {
+  color: var(--accent-color) !important;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.divider span {
+  position: relative;
+  padding: 0 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.guestButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: all 0.2s;
+}
+
+.guestButton:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.6;
+  margin-top: 2rem;
+}
+
+/* Logout page styles */
+.logoutContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.logoutIcon {
+  color: var(--accent-color);
+}
+
+.logoutText {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.logoutButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.secondaryButton {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: all 0.2s;
+}
+
+.secondaryButton:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}

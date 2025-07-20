@@ -1,0 +1,136 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll; /* Force scrollbar to always show */
+  overflow-x: auto;
+  color: var(--foreground);
+  padding: 1rem;
+  padding-right: 1rem; /* Normal padding */
+  align-self: flex-start; /* Override the center alignment from parent */
+}
+
+/* Custom scrollbar styling */
+.container::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 6px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 6px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-tertiary);
+}
+
+.container::-webkit-scrollbar-corner {
+  background: var(--background-secondary);
+}
+
+.header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.status {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.9rem;
+  color: var(--foreground-secondary);
+}
+
+.status strong {
+  color: var(--foreground-primary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  background: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  background: var(--background-tertiary);
+  padding: 1rem 1.5rem;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  color: var(--foreground-primary);
+}
+
+.codeBlock {
+  padding: 1.5rem;
+  overflow-x: auto;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.codeBlock pre {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--foreground-secondary);
+  white-space: pre;
+  word-wrap: break-word;
+}
+
+.mapDisplay {
+  padding: 1.5rem;
+  background: var(--background-primary);
+  overflow-x: auto;
+}
+
+.mapDisplay pre {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  color: var(--foreground-primary);
+  letter-spacing: 0.5px;
+}
+
+/* Scrollbar styling */
+.codeBlock::-webkit-scrollbar,
+.mapDisplay::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.codeBlock::-webkit-scrollbar-track,
+.mapDisplay::-webkit-scrollbar-track {
+  background: var(--background-tertiary);
+}
+
+.codeBlock::-webkit-scrollbar-thumb,
+.mapDisplay::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.codeBlock::-webkit-scrollbar-thumb:hover,
+.mapDisplay::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-tertiary);
+}

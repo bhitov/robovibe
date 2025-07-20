@@ -1,0 +1,97 @@
+/* Sidebar CSS overrides to ensure proper font and color isolation */
+
+/* Use exact font stack from Tailwind CSS defaults */
+.chat-sidebar {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  line-height: 1.5 !important;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Font inheritance is handled by setting font-family on parent elements */
+
+/* Color overrides for specific elements */
+.chat-sidebar .assistant-message,
+.chat-sidebar .user-message,
+.chat-sidebar .tab,
+.chat-sidebar .chat-textarea,
+.chat-sidebar .file-name,
+.chat-sidebar .tool-call-content {
+  color: inherit;
+}
+
+/* Ensure code blocks use exact Tailwind monospace font stack */
+.chat-sidebar .tool-call-content,
+.chat-sidebar .code-block,
+.chat-sidebar code,
+.chat-sidebar pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-feature-settings: normal !important;
+  font-variation-settings: normal !important;
+}
+
+/* Ensure sidebar CSS variables take precedence */
+.chat-sidebar {
+  --background: #09090b !important;
+  --background-primary: #09090b !important;
+  --background-secondary: #18181b !important;
+  --background-tertiary: #27272a !important;
+  --background-onlook: #1e40af !important;
+  
+  --foreground: #fafafa !important;
+  --foreground-primary: #fafafa !important;
+  --foreground-secondary: #a1a1aa !important;
+  --foreground-tertiary: #71717a !important;
+  --foreground-hover: #f4f4f5 !important;
+  
+  --border: #27272a !important;
+  --primary: #3b82f6 !important;
+  --muted-foreground: #a1a1aa !important;
+  
+  --text-micro: 0.625rem !important;
+  --text-mini: 0.75rem !important;  /* 12px */
+  --text-small: 0.875rem !important; /* 14px */
+  --text-smallPlus: 0.9375rem !important;
+}
+
+/* Ensure proper text color inheritance within sidebar */
+.chat-sidebar .assistant-message {
+  color: var(--foreground-primary) !important;
+}
+
+.chat-sidebar .user-message-content {
+  color: var(--foreground-primary) !important;
+}
+
+.chat-sidebar .tab {
+  color: var(--foreground-secondary) !important;
+}
+
+.chat-sidebar .tab:hover {
+  color: var(--foreground-hover) !important;
+}
+
+.chat-sidebar .tab.active {
+  color: var(--primary) !important;
+}
+
+.chat-sidebar .chat-textarea {
+  color: var(--foreground-primary) !important;
+  caret-color: #FA003C !important;
+}
+
+.chat-sidebar .chat-textarea::selection {
+  background-color: rgba(250, 0, 60, 0.3) !important;
+  color: #FA003C !important;
+}
+
+.chat-sidebar .chat-textarea::placeholder {
+  color: var(--foreground-tertiary) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure z-index is high enough to appear above main app content */
+.chat-sidebar {
+  z-index: 1001 !important;
+}

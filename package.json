@@ -1,0 +1,41 @@
+{
+  "name": "uber-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build --continue",
+    "dev": "turbo run dev --parallel",
+    "dev:apps": "turbo run dev --filter=\"@repo/api\" --filter=\"@repo/web\" --parallel",
+    "dev:admin": "turbo run dev --filter=\"@repo/admin-api\" --filter=\"@repo/admin-frontend\" --parallel",
+    "test:admin": "turbo run test --filter=\"@repo/admin-api\" --filter=\"@repo/admin-frontend\"",
+    "build:admin": "turbo run build --filter=\"@repo/admin-api\" --filter=\"@repo/admin-frontend\"",
+    "packages": "node scripts/list-packages.js",
+    "lint": "turbo run lint --continue",
+    "lint:fix": "turbo run lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types --continue",
+    "test": "turbo run test --continue",
+    "test:run": "turbo run test:run --continue",
+    "test:coverage": "turbo run test:coverage",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "db:generate": "turbo run db:generate --filter=@repo/db",
+    "db:migrate": "turbo run db:migrate --filter=@repo/db",
+    "db:studio": "turbo run db:studio --filter=@repo/db"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.4",
+    "typescript": "5.8.3",
+    "typescript-eslint": "^8.15.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

@@ -1,0 +1,282 @@
+.container {
+  max-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  color: var(--text-color);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #444 var(--main-bg);
+}
+
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--main-bg);
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titleIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--text-color);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.newToRoboVibeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #7c3aed;
+  border-radius: 0.375rem;
+  color: #c084fc;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.newToRoboVibeButton:hover {
+  background-color: rgba(147, 51, 234, 0.3);
+}
+
+.sparklesIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* How It Works Section */
+.howItWorksBox {
+  background-color: rgba(29, 78, 216, 0.3);
+  border: 1px solid #3b82f6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.howItWorksTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #93c5fd;
+  margin-bottom: 0.5rem;
+}
+
+.howItWorksText {
+  color: #93c5fd;
+  line-height: 1.6;
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sectionIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.targetIcon { color: var(--text-color); }
+.gamepadIcon { color: var(--text-color); }
+.settingsIcon { color: var(--text-color); }
+.codeIcon { color: var(--text-color); }
+
+.sectionText {
+  color: #d1d5db;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.objectiveText {
+  color: #4ade80;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Actions */
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.actionItem {
+  color: #d1d5db;
+  font-size: 0.875rem;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.actionItem code {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+/* Game Settings */
+.settingsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  max-width: 400px;
+}
+
+.settingRow {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.settingLabel {
+  color: #9ca3af;
+  min-width: 120px;
+}
+
+.settingValue {
+  color: #d1d5db;
+}
+
+.specialRules {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.specialRule {
+  color: #d1d5db;
+  font-size: 0.75rem;
+}
+
+/* Map Display */
+.mapBox {
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  display: inline-block;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #444 #111827;
+}
+
+.mapBox::-webkit-scrollbar {
+  height: 6px;
+}
+
+.mapBox::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+.mapBox::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.mapAscii {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: #4ade80;
+  white-space: pre;
+  margin: 0;
+}
+
+/* System Prompt */
+.systemPromptBox {
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #444 #111827;
+}
+
+.systemPromptBox::-webkit-scrollbar {
+  height: 6px;
+}
+
+.systemPromptBox::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+.systemPromptBox::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.systemPrompt {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #d1d5db;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .settingRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}

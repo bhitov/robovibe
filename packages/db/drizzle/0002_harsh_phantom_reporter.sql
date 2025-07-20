@@ -1,0 +1,1 @@
+ALTER TABLE "system_prompts" DROP COLUMN "model";

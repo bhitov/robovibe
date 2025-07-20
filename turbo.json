@@ -1,0 +1,60 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "inputs": ["$TURBO_DEFAULT$", "eslint.config.*"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "inputs": ["$TURBO_DEFAULT$", "eslint.config.*"],
+      "cache": false
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"],
+      "inputs": ["$TURBO_DEFAULT$", "tsconfig.json"]
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*", "tests/**/*"]
+    },
+    "test:run": {
+      "dependsOn": ["^test:run"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*", "tests/**/*"]
+    },
+    "test:coverage": {
+      "dependsOn": ["^test:coverage"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*", "tests/**/*"],
+      "outputs": ["coverage/**"]
+    },
+    "db:generate": {
+      "inputs": ["src/schema.ts", "drizzle.config.ts"],
+      "outputs": ["drizzle/**"],
+      "env": ["DATABASE_URL"]
+    },
+    "db:migrate": {
+      "dependsOn": ["db:generate"],
+      "cache": false,
+      "env": ["DATABASE_URL"]
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true,
+      "env": ["DATABASE_URL"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": ["DATABASE_URL", "PORT", "NODE_ENV", "CLIENT_URL", "SERVER_URL", "API_URL", "OPENAI_API_KEY"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
