@@ -6,6 +6,7 @@
     "build": "turbo run build --continue",
     "dev": "turbo run dev --parallel",
     "dev:apps": "turbo run dev --filter=\"@repo/api\" --filter=\"@repo/web\" --parallel",
+    "dev:voice-only": "VITE_VOICE_ONLY=true turbo run dev --filter=\"@repo/api\" --filter=\"@repo/web\" --parallel",
     "dev:admin": "turbo run dev --filter=\"@repo/admin-api\" --filter=\"@repo/admin-frontend\" --parallel",
     "test:admin": "turbo run test --filter=\"@repo/admin-api\" --filter=\"@repo/admin-frontend\"",
     "build:admin": "turbo run build --filter=\"@repo/admin-api\" --filter=\"@repo/admin-frontend\"",

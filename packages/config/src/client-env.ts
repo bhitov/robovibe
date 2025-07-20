@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly VITE_CLERK_PUBLISHABLE_KEY: string
   readonly VITE_CLIENT_URL?: string
   readonly VITE_SERVER_URL?: string
+  readonly VITE_VOICE_ONLY?: string
 }
 
 interface ImportMeta {
@@ -46,4 +47,7 @@ export const clientEnvConfig = {
   
   // Clerk Publishable Key
   clerkPublishableKey: getEnvVar('VITE_CLERK_PUBLISHABLE_KEY', 'pk_test_cmFwaWQtcGFudGhlci00OC5jbGVyay5hY2NvdW50cy5kZXYk'),
+  
+  // Voice only mode
+  voiceOnly: getEnvVar('VITE_VOICE_ONLY', 'false') === 'true',
 } as const;

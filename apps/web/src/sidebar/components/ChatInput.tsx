@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContextPill, ChatMode } from '../types';
 import { models } from '@repo/game-config';
+import { clientEnvConfig } from '@repo/config/client-env';
 
 interface ChatInputProps {
     value: string;
@@ -34,6 +35,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
     const [showModeMenu, setShowModeMenu] = useState(false);
     const [showModelMenu, setShowModelMenu] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const isVoiceOnly = clientEnvConfig.voiceOnly;
 
     useEffect(() => {
         if (textareaRef.current) {
@@ -41,11 +43,21 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
         }
     }, [value]);
+    
+    // Force vibe mode when voice-only is enabled
+    useEffect(() => {
+        if (isVoiceOnly && chatMode !== 'vibe') {
+            setChatMode('vibe');
+        }
+    }, [isVoiceOnly, chatMode, setChatMode]);
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            onSend(selectedModel);
+            // Don't send in voice-only mode
+            if (!isVoiceOnly) {
+                onSend(selectedModel);
+            }
         }
     };
 
@@ -97,25 +109,29 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             <div className="input-wrapper">
                 <textarea
                     ref={textareaRef}
-                    value={value}
-                    onChange={(e) => onChange(e.target.value)}
+                    value={isVoiceOnly ? "Voice-only mode: Click the microphone to speak" : value}
+                    onChange={(e) => !isVoiceOnly && onChange(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Tell your bot what to do"
-                    className="chat-textarea"
+                    placeholder={isVoiceOnly ? "Voice-only mode active" : "Tell your bot what to do"}
+                    className={`chat-textarea ${isVoiceOnly ? 'voice-only' : ''}`}
                     rows={2}
+                    readOnly={isVoiceOnly}
                 />
                 
                 <div className="input-actions">
                     <div className="input-left-actions">
-                        <button className="action-button" onClick={handleScreenshot} title="Take screenshot">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </button>
+                        {!isVoiceOnly && (
+                            <button className="action-button" onClick={handleScreenshot} title="Take screenshot">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </button>
+                        )}
                         
-                        <div className="mode-dropdown">
-                            <button className="mode-button" onClick={() => { setShowModeMenu(!showModeMenu); setShowModelMenu(false); }}>
+                        {!isVoiceOnly && (
+                            <div className="mode-dropdown">
+                                <button className="mode-button" onClick={() => { setShowModeMenu(!showModeMenu); setShowModelMenu(false); }}>
                                 {modes.find(m => m.value === chatMode)?.label}
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -139,6 +155,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                                 </div>
                             )}
                         </div>
+                        )}
                         
                         <div className="mode-dropdown">
                             <button className="mode-button" onClick={() => { setShowModelMenu(!showModelMenu); setShowModeMenu(false); }}>
@@ -176,7 +193,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                                 onSend(selectedModel);
                             }
                         }}
-                        disabled={chatMode === 'text' ? (!value.trim() && !isThinking) : isThinking}
+                        disabled={isVoiceOnly ? isThinking : (chatMode === 'text' ? (!value.trim() && !isThinking) : isThinking)}
                     >
                         {isThinking ? (
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">

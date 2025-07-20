@@ -44,7 +44,7 @@ const AboutPage = () => {
           </h3>
           <p className={styles.sectionText}>
           Inspired by classic programming games like Robocode, RoboVibe lets you command AI bots in real-time multiplayer arenas—using natural-language prompts.
-          LLMs transform your ideas into control functions that are loaded in real time to control bots in an arena.
+          LLMs transform your ideas into control functions that are loaded in real time to control bots in an arena. Join a game then use the Cursor chat window to get started!
           </p>
         </div>
 

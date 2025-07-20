@@ -135,10 +135,10 @@ export function joinGame(gameId: string, player: GamePlayer): { success: boolean
     return { success: false, error: `Game "${gameInfo.name}" is full (${gameInfo.players.size}/${gameInfo.maxPlayers} players)` };
   }
   
-  // Check if game is already running
-  if (gameInfo.status === GameStatus.InGame) {
-    return { success: false, error: `Game "${gameInfo.name}" is already in progress` };
-  }
+  // // Check if game is already running
+  // if (gameInfo.status === GameStatus.InGame) {
+  //   return { success: false, error: `Game "${gameInfo.name}" is already in progress` };
+  // }
   
   // Add player to game
   gameInfo.players.set(player.id, player);
@@ -192,8 +192,7 @@ export function getQuickPlayGame(mode?: GameMode): GameInfo | undefined {
   let maxPlayers = 0;
   
   for (const gameInfo of gameInfos.values()) {
-    // Skip games that are running or full
-    if (gameInfo.status !== GameStatus.Waiting) continue;
+    // Skip games that are full
     if (gameInfo.players.size >= gameInfo.maxPlayers) continue;
     
     // Filter by mode if specified

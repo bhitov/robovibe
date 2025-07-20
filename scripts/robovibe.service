@@ -1,0 +1,19 @@
+[Unit]
+Description=RoboVibe Application Services
+After=network.target nginx.service
+
+[Service]
+Type=forking
+User=ubuntu
+WorkingDirectory=/home/ubuntu/turbo-template
+ExecStart=/home/ubuntu/turbo-template/scripts/start-services.sh
+ExecStop=/home/ubuntu/turbo-template/scripts/stop-services.sh
+Restart=on-failure
+RestartSec=10
+
+# Environment
+Environment="NODE_ENV=production"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/ubuntu/.nvm/versions/node/v20.19.4/bin"
+
+[Install]
+WantedBy=multi-user.target

@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5613,
+    port: 5614,
     host: '0.0.0.0', // Listen on all interfaces
     allowedHosts: ['robovibe.raspyaspie.com', 'localhost', '52.90.23.181'],
   },
