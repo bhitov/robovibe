@@ -16,8 +16,13 @@ interface ImportMeta {
 // Helper function to get environment variables safely
 function getEnvVar(key: string, defaultValue: string): string {
   // In browser/Vite environment
-  if (typeof window !== 'undefined' && typeof import !== 'undefined' && import.meta && import.meta.env) {
-    return (import.meta.env as any)[key] ?? defaultValue;
+  if (typeof window !== 'undefined') {
+    try {
+      // @ts-ignore - import.meta is not available in all environments
+      return (import.meta.env as any)[key] ?? defaultValue;
+    } catch {
+      // import.meta not available
+    }
   }
   
   // In Node.js environment (for SSR or build time)
