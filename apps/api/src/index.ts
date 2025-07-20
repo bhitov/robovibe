@@ -23,6 +23,14 @@ app.use(helmet());
 const corsOrigins = [
   'http://localhost:5193', // Main web app
   'http://localhost:5613', // VS-web app
+  'http://localhost:5614', // VS-web app alt port
+  'http://52.90.23.181:5613', // EC2 web app
+  'http://52.90.23.181:5614', // EC2 web app (current port)
+  'http://52.90.23.181:3001', // EC2 API
+  'http://robovibe.raspyaspie.com', // Domain name for web app
+  'http://api.raspyaspie.com', // Domain name for API
+  'https://robovibe.raspyaspie.com', // HTTPS domain for web app
+  'https://api.raspyaspie.com', // HTTPS domain for API
 ];
 
 // Add production URLs if they exist
@@ -85,9 +93,10 @@ if (!serverConfig.isTest) {
     corsOrigin: corsOrigins
   });
 
-  server.listen(port, () => {
-    console.log(`Server running on port ${String(port)}`);
+  server.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on http://0.0.0.0:${String(port)}`);
     console.log(`Socket.IO server ready for streaming`);
+    console.log(`External access: http://52.90.23.181:${String(port)}`);
   });
 }
 

@@ -11,6 +11,8 @@ export default defineConfig({
   },
   server: {
     port: 5613,
+    host: '0.0.0.0', // Listen on all interfaces
+    allowedHosts: ['robovibe.raspyaspie.com', 'localhost', '52.90.23.181'],
   },
   // Vite will automatically load .env files and expose VITE_* variables
 })

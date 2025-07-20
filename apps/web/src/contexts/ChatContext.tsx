@@ -18,6 +18,19 @@ interface ChatCtx {
 
 const ChatContext = createContext<ChatCtx | null>(null)
 
+// Fallback for browsers that don't support crypto.randomUUID
+const generateId = () => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  // Fallback implementation
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0
+    const v = c === 'x' ? r : (r & 0x3 | 0x8)
+    return v.toString(16)
+  })
+}
+
 export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [messages, setMessages] = useState<Message[]>([])
   const [isThinking, setIsThinking] = useState(false)
@@ -25,13 +38,13 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const currentlyStreaming = useRef<string | null>(null)
 
   const addUserMsg = useCallback((content: string) => {
-    const id = crypto.randomUUID()
+    const id = generateId()
     setMessages((m) => [...m, { id, role: 'user', content }])
     return id
   }, [])
 
   const startAssistantThinking = useCallback(() => {
-    const id = crypto.randomUUID()
+    const id = generateId()
     setIsThinking(true)
     setMessages((m) => [...m, { id, role: 'assistant', content: '', isStreaming: true }])
     return id
