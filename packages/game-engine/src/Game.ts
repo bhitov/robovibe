@@ -757,7 +757,7 @@ export class Game {
       for (const bot of this.state.bots.values()) {
         if (bot.health! <= 0 || bot.playerId === p.ownerId) continue;
         if (getDistance(bot.position, p.position) < BOT_RADIUS + 2) {
-          bot.health = Math.max(0, bot.health! - 20);
+          bot.health = Math.max(0, bot.health! - 40);
           
           // Handle tank death with lives system
           if (bot.health === 0 && this.gameMode === 'tankCombat') {

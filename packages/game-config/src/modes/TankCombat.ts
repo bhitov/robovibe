@@ -33,8 +33,8 @@ Available actions:
 The store object persists between ticks. Use it to remember state.
 
 Tank specs: 100 HP, max speed 8 pixels/tick, 10°/tick turn rate.
-Shells do 20 damage, travel at 15 pixels/tick.
-Each tank starts with 3 lives. Respawn after death with full health.
+Shells do 40 damage, travel at 15 pixels/tick.
+Each tank starts with 1 life. When killed, the tank is eliminated from the game.
 
 IMPORTANT: Return ONLY the function code, no explanations or markdown.`,
   
@@ -59,7 +59,7 @@ IMPORTANT: Return ONLY the function code, no explanations or markdown.`,
     bulletSpeed: 15,
     turnRate: 10,
     fireCooldown: 90,
-    maxLives: 3,
+    maxLives: 1,
     respawnDelay: 90
   },
   
