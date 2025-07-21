@@ -1,0 +1,25 @@
+{
+  "apps": [
+    {
+      "name": "robovibe-voice",
+      "script": "pnpm",
+      "args": "dev:voice-only",
+      "cwd": "/home/ubuntu/turbo-template",
+      "env": {
+        "NODE_ENV": "production",
+        "VITE_VOICE_ONLY": "true"
+      },
+      "error_file": "/home/ubuntu/turbo-template/logs/pm2-error.log",
+      "out_file": "/home/ubuntu/turbo-template/logs/pm2-out.log",
+      "log_file": "/home/ubuntu/turbo-template/logs/pm2-combined.log",
+      "time": true,
+      "restart_delay": 4000,
+      "max_restarts": 10,
+      "autorestart": true,
+      "watch": false,
+      "max_memory_restart": "2G",
+      "instances": 1,
+      "exec_mode": "fork"
+    }
+  ]
+}

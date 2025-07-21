@@ -16,8 +16,8 @@ const GameRulesPage = () => {
   const { gameConfig: liveConfig, gameState } = useGame();
   
 
-  // Default to random mode (Tank or Orb) when no live config is present
-  const gameMode = liveConfig?.mode ?? (Math.random() < 0.5 ? GameMode.TankCombat : GameMode.OrbGame);
+  // Default to Orb game when no live config is present
+  const gameMode = liveConfig?.mode ?? GameMode.OrbGame;
   const modeConfig = getGameModeConfig(gameMode);
   const gameSettings = getGameSettings(gameMode);
   const rules = generateGameRules(modeConfig, gameSettings, gameMode);

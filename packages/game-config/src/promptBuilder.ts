@@ -89,7 +89,7 @@ export function buildSystemPrompt(config: GameConfig): string {
   }
   
   if (config.allowedActions.fire) {
-    parts.push(`- {type: 'fire'} - fire a projectile (${String(config.fireCooldown ?? 90)} tick cooldown)`);
+    parts.push(`- {type: 'fire', dx: number, dy: number} - fire a projectile in direction (dx, dy) relative to bot's current position + (${String(config.fireCooldown ?? 90)} tick cooldown)`);
   }
   
   if (config.allowedActions.pickup) {

@@ -17,7 +17,7 @@ export const ChatSidebar: React.FC = () => {
     const { messages, isThinking, addUserMsg, startAssistantThinking, updateAssistantMsg, finishAssistantMsg } = useChat();
     const [error, setError] = useState<string | null>(null);
     const [contextPills, setContextPills] = useState<ContextPill[]>([]);
-    const [chatMode, setChatMode] = useState<ChatMode>('text');
+    const [chatMode, setChatMode] = useState<ChatMode>('vibe');
     const [selectedModel, setSelectedModel] = useState<string>('gpt-3.5-turbo');
     const [voiceAssistantId, setVoiceAssistantId] = useState<string | null>(null);
     
